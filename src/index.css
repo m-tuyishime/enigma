@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+body {
+    display: grid;
+    width: 100vw;
+    height: 100vh;
+}
+
+.rotor-container {
+    display: grid;
+    grid-template-columns: 90% 10%;
+    padding: 2%;
+}
+
+.rows {
+    display: grid;
+    grid-template-rows: 6% 18% 18% 18% 6%;
+    grid-gap: 6%;
+}
+
+.rotor {
+    display: grid;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(26, 1fr);
+}
+
+.direction,
+.letter {
+    border: 0.2vh solid black;
+}
+
+.labels {
+    display: grid;
+    grid-template-rows: 6% 18% 18% 18% 6%;
+    grid-gap: 6%;
+}
+
+.input-container {
+    display: grid;
+    grid-template-rows: 34% 22% 22% 22%;
+    padding: 0 2%;
+    border-top: 0.2vh solid black;
+}
+
+.key-container {
+    padding: 2%;
+}
+
+.key-container p {
+    display: inline;
+    font-weight: bold;
+}
+
+.key,
+.encrypt,
+.decrypt {
+    width: 80%;
+    height: 80%;
+}
+
+button {
+    margin: 2% 3%;
+    height: 30%;
+    width: 10%;
+}
