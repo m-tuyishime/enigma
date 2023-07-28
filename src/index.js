@@ -5,6 +5,7 @@ const scriptNames = [
     "global.js",
     "start_config.js",
     "buttons.js",
+    "inputs.js",
 ].map(name => scriptPath + name);
 
 

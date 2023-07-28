@@ -38,22 +38,8 @@ const encryptDecrypt = async (action) => {
         return alert("Veuillez configurer la machine avant de l'utiliser.");
 
     const reverseAction = (action === "encrypt") ? "decrypt" : "encrypt";
-    // Check pattern of the input
     let $action = $("." + action);
-    let pattern = "[A-Z]i"
     let value = $action.val();
-
-    const isValid = await invoke("check_regex", { pattern, value });
-
-    if (!isValid)
-        return alert("La lettre a chiffrer est incorrecte. Veuillez entrer un format valid. Exemple: A");
-
-    // Clear the other input
-    $("." + reverseAction).val("");
-
-    // Disable the other input and button
-    $("." + reverseAction).attr("readonly", true);
-    $("." + reverseAction + "-button").attr("disabled", true);
 
     // Encrypt or decrypts the letter
     const letter = value[value.length - 1];
