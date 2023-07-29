@@ -43,12 +43,13 @@ const encryptDecrypt = async (action) => {
 
     // Encrypt or decrypts the letter
     const letter = value[value.length - 1];
-    const newLetter = await invoke(action, { letter, key });
+    const [newLetter, path] = await invoke("encrypt_decrypt", { letter, config: startConfig });
+    console.log(newLetter);
 
-    // Write the new letter in the other input
-    $("." + reverseAction).val(
-        $("." + reverseAction).val() + newLetter
-    );
+    // Adds the new letter to the other action's input
+    // $("." + reverseAction).val(
+    //     $("." + reverseAction).val() + newLetter
+    // );
 };
 
 // Rotates a rotor in the desired direction
