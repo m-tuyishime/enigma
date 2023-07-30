@@ -51,6 +51,17 @@ const encryptDecrypt = async (action) => {
     $("." + reverseAction).val(
         $("." + reverseAction).val() + newLetter
     );
+
+    // Iluminate the path
+    $("#refl-" + path.refl).addClass("red");
+    $("#r2-0-" + path.r2[0]).addClass("red");
+    $("#r2-1-" + path.r2[1]).addClass("blue");
+    $("#r1-0-" + path.r1[0]).addClass("red");
+    $("#r1-1-" + path.r1[1]).addClass("blue");
+    $("#r0-0-" + path.r0[0]).addClass("red");
+    $("#r0-1-" + path.r0[1]).addClass("blue");
+    $("#l-" + path.l[0]).addClass("red");
+    $("#l-" + path.l[1]).addClass("blue");
 };
 
 // Rotates a rotor in the desired direction
