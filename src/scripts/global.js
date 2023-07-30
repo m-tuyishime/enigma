@@ -4,6 +4,8 @@ const { invoke } = window.__TAURI__.tauri;
 // Configuration key
 let key = null;
 
+let rotationCount = 0;
+
 // Starting position of the rotors
 let startConfig = null;
 const getStartConfig = async () => {
@@ -44,12 +46,11 @@ const encryptDecrypt = async (action) => {
     // Encrypt or decrypts the letter
     const letter = value[value.length - 1];
     const [newLetter, path] = await invoke("encrypt_decrypt", { letter, config: startConfig });
-    console.log(newLetter);
 
     // Adds the new letter to the other action's input
-    // $("." + reverseAction).val(
-    //     $("." + reverseAction).val() + newLetter
-    // );
+    $("." + reverseAction).val(
+        $("." + reverseAction).val() + newLetter
+    );
 };
 
 // Rotates a rotor in the desired direction

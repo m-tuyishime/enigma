@@ -39,4 +39,30 @@ $(() => {
     $(".reset").click(() => {
         location.reload();
     });
-})
+
+    // Next step button
+    $(".next").click(async () => {
+        // Check if the machine is configured
+        if (key === null)
+            return alert("Veuillez configurer la machine avant de l'utiliser.");
+
+        if ($(".encrypt").val() === "" || $(".decrypt").val() === "" || nextClicked)
+            return alert("Veuillez d'abord chiffrer ou déchiffrer une lettre.");
+
+
+        // sets the state of the next button to true to allow for more input
+        // (check src\scripts\input.js)
+        nextClicked = true;
+
+        // Check if the rotor has done a full rotation
+        // (check src\scripts\global.js)
+        if (rotationCount === 26) {
+            rotationCount = 0;
+            key = [key[1], key[2], key[0]];
+        }
+
+        // Rotates the rotors
+        rotateRotor("r" + key[0][0], key[0][1]);
+        rotationCount++;
+    });
+});

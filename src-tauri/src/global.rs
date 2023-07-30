@@ -20,7 +20,7 @@ pub mod global {
 
             temp.push(inner_parts[0].replace("R", "").parse::<i8>().unwrap() - 1);
             if inner_parts[1] == "G" {
-                temp.push(0);
+                temp.push(-1);
             } else {
                 temp.push(1);
             }
