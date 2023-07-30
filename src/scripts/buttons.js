@@ -49,6 +49,9 @@ $(() => {
         if ($(".encrypt").val() === "" || $(".decrypt").val() === "" || nextClicked)
             return alert("Veuillez d'abord chiffrer ou déchiffrer une lettre.");
 
+        // Clears last path
+        $(".red").removeClass("red");
+        $(".blue").removeClass("blue");
 
         // sets the state of the next button to true to allow for more input
         // (check src\scripts\input.js)
