@@ -7,7 +7,7 @@ mod global;
 use global::global::*;
 use crypto::crypto::*;
 
-
+// allows the front-end to call the rust functions
 fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![

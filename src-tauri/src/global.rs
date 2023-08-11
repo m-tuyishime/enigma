@@ -1,11 +1,12 @@
 pub mod global {
+    // validates a string against a regex pattern
     #[tauri::command]
     pub fn check_regex(pattern: &str, value: &str) -> bool {
         let re = regex::Regex::new(pattern).unwrap();
         re.is_match(value)
     }
 
-
+    // formats user key input
     // takes a string in the format of "(R3, G, +7)(R1, D, -6)(R2, D, +5)" and returns an array
     // in the format "[[2, 0, 7], [0, 1, -6], [1, 1, 5]]"
     #[tauri::command]

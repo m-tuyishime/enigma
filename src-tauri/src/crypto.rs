@@ -1,6 +1,9 @@
+#![allow(unused_assignments)]
+
 pub mod crypto {
     use crate::global::global::modulo26;
 
+    // struct of a configuration of the enigma machine (reflector, letters, rotors)
     #[derive(serde::Serialize, serde::Deserialize)]
     pub struct Config {
         refl: [i8; 26],
@@ -10,6 +13,7 @@ pub mod crypto {
         r2: [[i8; 26]; 2],
     }
 
+    // struct of indexes of the path of a letter conversion
     #[derive(serde::Serialize, serde::Deserialize)]
     pub struct Path {
         refl: u8,
@@ -19,6 +23,8 @@ pub mod crypto {
         r2: [u8; 2],
     }
 
+    
+    // returns the final letter and the path of the conversion
     #[tauri::command]
     pub fn encrypt_decrypt(letter: char, config: Config) -> (char, Path) {
         let mut path = Path {
@@ -29,8 +35,11 @@ pub mod crypto {
             r2: [0, 0],
         };
 
-        // turn letter to uppercase and get index
+        // Convert a letter to uppercase and get its index
         let letter = letter.to_ascii_uppercase();
+        
+
+        // gets indexes of configurations and saves it in path
         let mut letter_index: i8 = config.l.iter().position(|&l| l == letter).unwrap() as i8;
         path.l[0] = letter_index as u8;
 
