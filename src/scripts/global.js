@@ -39,9 +39,12 @@ const encryptDecrypt = async (action) => {
     if (key === null)
         return alert("Veuillez configurer la machine avant de l'utiliser.");
 
+    // Check there is text to encrypt or decrypt
+    if (nextClicked)
+        return alert("Veuillez entrer du texte à " + action + "er.");
+
     const reverseAction = (action === "encrypt") ? "decrypt" : "encrypt";
-    let $action = $("." + action);
-    let value = $action.val();
+    let value = $("." + action).val();
 
     // Encrypt or decrypts the letter
     const letter = value[value.length - 1];
@@ -62,6 +65,14 @@ const encryptDecrypt = async (action) => {
     $("#r0-1-" + path.r0[1]).addClass("blue");
     $("#l-" + path.l[0]).addClass("red");
     $("#l-" + path.l[1]).addClass("blue");
+
+    // Disable the action's button and mark it as used
+    const $button = $("." + action + "-button");
+    $button.prop("disabled", true);
+    $button.addClass("used");
+
+    // Enable the next step button
+    $(".next").prop("disabled", false);
 };
 
 // Rotates a rotor in the desired direction

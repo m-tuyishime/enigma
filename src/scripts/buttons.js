@@ -46,12 +46,17 @@ $(() => {
         if (key === null)
             return alert("Veuillez configurer la machine avant de l'utiliser.");
 
-        if ($(".encrypt").val() === "" || $(".decrypt").val() === "" || nextClicked)
-            return alert("Veuillez d'abord chiffrer ou déchiffrer une lettre.");
+        // disables the next button
+        $(".next").attr("disabled", true);
 
         // Clears last path
         $(".red").removeClass("red");
         $(".blue").removeClass("blue");
+
+        // enables the used encrypt or decrypt button
+        // and removes the used class
+        $(".used").attr("disabled", false);
+        $(".used").removeClass("used");
 
         // sets the state of the next button to true to allow for more input
         // (check src\scripts\input.js)
